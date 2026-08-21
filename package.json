@@ -1,0 +1,15 @@
+{
+  "name": "shrieve-industries",
+  "version": "1.0.0-alpha",
+  "description": "Shrieve Industries - Official Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "bcryptjs": "^2.4.3"
+  }
+}
