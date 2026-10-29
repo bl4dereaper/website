@@ -1,243 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrieve Industries | Future Engineering</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shrieve Industries — Cultural Heritage Imaging</title>
+<meta name="description" content="Shrieve Industries builds imaging software for the study of cultural heritage. Kairo is our first release: end-to-end multispectral imaging for manuscripts, documents, and artifacts.">
+<meta property="og:title" content="Shrieve Industries — Cultural Heritage Imaging">
+<meta property="og:description" content="Reveal what time has hidden. Kairo is end-to-end multispectral imaging software for the study of cultural heritage.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.shrieveindustries.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314110E'/%3E%3Ccircle cx='16' cy='16' r='12.5' fill='none' stroke='%23C9A24B' stroke-width='1.6'/%3E%3Cpath d='M16 8.5 A7.5 7.5 0 0 1 23.5 16' fill='none' stroke='%235B6FE0' stroke-width='1.8'/%3E%3Cpath d='M16 8.5 A7.5 7.5 0 0 1 23.5 16' fill='none' stroke='%23C9A24B' stroke-width='1.8' transform='rotate(120 16 16)'/%3E%3Cpath d='M16 8.5 A7.5 7.5 0 0 1 23.5 16' fill='none' stroke='%23C4502E' stroke-width='1.8' transform='rotate(240 16 16)'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23EFE7D8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div id="mainView">
-        <nav>
-            <div class="logo-container">
-                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#7000ff;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M50 5 L93.3 27.5 L93.3 72.5 L50 95 L6.7 72.5 L6.7 27.5 Z" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="25" fill="none" stroke="url(#logoGrad)" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="10" fill="url(#logoGrad)">
-                        <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                    <line x1="50" y1="20" x2="50" y2="35" stroke="url(#logoGrad)" stroke-width="2"/>
-                    <line x1="50" y1="65" x2="50" y2="80" stroke="url(#logoGrad)" stroke-width="2"/>
-                    <line x1="20" y1="50" x2="35" y2="50" stroke="url(#logoGrad)" stroke-width="2"/>
-                    <line x1="65" y1="50" x2="80" y2="50" stroke="url(#logoGrad)" stroke-width="2"/>
-                </svg>
-                <div class="brand">SHRIEVE INDUSTRIES</div>
-            </div>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-                <button class="admin-btn" id="loginBtn" onclick="openLoginModal()">ADMIN ACCESS</button>
-                <button class="admin-btn" id="addProjectBtn" onclick="openAdminModal()" style="display:none; border-color: var(--primary); color: var(--primary);">+ ADD PROJECT</button>
-                <button class="admin-btn" id="logoutBtn" onclick="logout()" style="display:none; border-color: var(--accent); color: var(--accent);">LOGOUT</button>
-            </div>
-        </nav>
+<div class="grain" aria-hidden="true"></div>
 
-        <header class="hero">
-            <div class="hero-bg"></div>
-            <div class="scan-line"></div>
-            <div class="particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
-            <div class="hud-overlay">
-                <div class="hud-corner top-left"></div>
-                <div class="hud-corner top-right"></div>
-                <div class="hud-corner bottom-left"></div>
-                <div class="hud-corner bottom-right"></div>
-            </div>
-            <h1 data-text="ENGINEERING TOMORROW">ENGINEERING TOMORROW</h1>
-            <p>Not just building software. We're architecting the digital infrastructure of the future. Welcome to Shrieve Industries.</p>
-            <button class="cta-btn" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Initialize Projects</button>
-        </header>
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="Shrieve Industries home">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="12.5" stroke="#C9A24B" stroke-width="1.6"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#5B6FE0" stroke-width="1.8"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#C9A24B" stroke-width="1.8" transform="rotate(120 16 16)"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#C4502E" stroke-width="1.8" transform="rotate(240 16 16)"/>
+        <circle cx="16" cy="16" r="2" fill="#EFE7D8"/>
+      </svg>
+      <span>Shrieve&nbsp;Industries</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#kairo">Kairo</a>
+      <a href="#audience">Who it's for</a>
+      <a href="#approach">Approach</a>
+      <a href="#next">What's next</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-gold btn-sm" href="https://github.com/bl4dereaper/KAIRO" target="_blank" rel="noopener">Get Kairo</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-number" id="projectCount">0</div>
-                <div class="stat-label">Projects Deployed</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="activeCount">0</div>
-                <div class="stat-label">Active Development</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="completedCount">0</div>
-                <div class="stat-label">Completed Missions</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="futureCount">0</div>
-                <div class="stat-label">Future Classified</div>
-            </div>
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow reveal">Cultural heritage imaging</p>
+      <h1 class="reveal" data-delay="80">Reveal what time<br><em>has hidden.</em></h1>
+      <p class="lede reveal" data-delay="160">Shrieve Industries builds imaging software for the study of the past —
+        recovering faded ink, erased text, and hidden structure in manuscripts, documents, and artifacts.</p>
+      <div class="hero-cta reveal" data-delay="240">
+        <a class="btn btn-gold" href="#kairo">Explore Kairo</a>
+        <a class="btn btn-ghost" href="#approach">Our approach</a>
+      </div>
+    </div>
+    <div class="spectral reveal" data-delay="320" aria-hidden="true">
+      <div class="spectral-ticks">
+        <span>385</span><span>450</span><span>520</span><span>590</span><span>650</span><span>730</span><span>850</span><span>940</span>
+      </div>
+      <div class="spectral-bar"><span class="spectral-sheen"></span></div>
+      <div class="spectral-ends">
+        <span>Ultraviolet</span><span>Infrared</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KAIRO ============ -->
+  <section class="section" id="kairo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">First release</p>
+        <h2>Kairo</h2>
+        <p class="section-sub">Multispectral imaging, end to end.</p>
+      </div>
+
+      <div class="kairo-grid">
+        <div class="kairo-copy">
+          <p class="reveal">Kairo is a cross-platform application that carries a heritage object from
+            camera setup to a calibrated spectral image cube. It grows out of <a href="https://github.com/palimpsest-pursuers/capturing" target="_blank" rel="noopener">MISHA</a> —
+            the multispectral system developed at RIT for documents with overwritten or faded text —
+            and rebuilds the workflow around a single question: how do we make this accessible to
+            the scholars, curators, and conservators who don't run optics labs?</p>
+          <ul class="checklist">
+            <li class="reveal" data-delay="60">Guided, end-to-end workflow — noise, focus, per-band exposure, 16-band capture, flats, calibration, cube</li>
+            <li class="reveal" data-delay="120">Runs on cameras you already own — USB, industrial, or converted full-spectrum DSLR</li>
+            <li class="reveal" data-delay="180">Research-grade output — linear pipeline, ENVI spectral cubes, true-color rendering</li>
+            <li class="reveal" data-delay="240">Hardware-free demo mode — learn the entire workflow with synthetic frames</li>
+          </ul>
+          <div class="kairo-cta reveal" data-delay="300">
+            <a class="btn btn-gold" href="https://github.com/bl4dereaper/KAIRO" target="_blank" rel="noopener">Get Kairo on GitHub</a>
+            <span class="kairo-note">GPL-3.0 · macOS / Windows / Linux</span>
+          </div>
         </div>
 
-        <section id="projects" class="projects">
-            <div class="section-header">
-                <h2>Project Portfolio</h2>
-                <p style="color: var(--text-muted);">Current operations, completed missions, and classified future developments.</p>
-            </div>
-            <div class="grid" id="projectGrid"></div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="section-header">
-                <h2>About Shrieve Industries</h2>
-                <p style="color: var(--text-muted);">The mission. The engineer. The vision.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>The Architect</h3>
-                    <p>Shrieve Industries is the personal engineering division of Tom Shrieve — an Archives Imaging Specialist by trade and a relentless builder by nature. From hardware development and 3D printing to music production and emergency medical services, Shrieve Industries operates at the intersection of technology, creativity, and field-readiness.</p>
-                    <p>Whether it's writing code, designing circuit boards, patrolling the slopes at Lost Valley, or responding to emergencies, the mission is the same: build things that matter, solve problems that don't quit, and never stop iterating.</p>
-                    <div class="skills-grid">
-                        <div class="skill-tag">Programming</div>
-                        <div class="skill-tag">Hardware Dev</div>
-                        <div class="skill-tag">3D Printing</div>
-                        <div class="skill-tag">Music Production</div>
-                        <div class="skill-tag">Cooking</div>
-                        <div class="skill-tag">EMS / Ski Patrol</div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="about-hex">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:0.8" />
-                                    <stop offset="100%" style="stop-color:#7000ff;stop-opacity:0.8" />
-                                </linearGradient>
-                            </defs>
-                            <path d="M100 10 L176 52.5 L176 147.5 L100 190 L24 147.5 L24 52.5 Z" fill="none" stroke="url(#hexGrad)" stroke-width="1.5" opacity="0.4"/>
-                            <path d="M100 30 L159 62.5 L159 137.5 L100 170 L41 137.5 L41 62.5 Z" fill="none" stroke="url(#hexGrad)" stroke-width="1.5" opacity="0.6"/>
-                            <path d="M100 50 L141 72.5 L141 127.5 L100 150 L59 127.5 L59 72.5 Z" fill="none" stroke="url(#hexGrad)" stroke-width="1.5" opacity="0.8"/>
-                            <line x1="100" y1="10" x2="100" y2="50" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <line x1="176" y1="52.5" x2="141" y2="72.5" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <line x1="176" y1="147.5" x2="141" y2="127.5" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <line x1="100" y1="190" x2="100" y2="150" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <line x1="24" y1="147.5" x2="59" y2="127.5" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <line x1="24" y1="52.5" x2="59" y2="72.5" stroke="url(#hexGrad)" stroke-width="1" opacity="0.5"/>
-                            <circle cx="100" cy="10" r="3" fill="#00f0ff"/>
-                            <circle cx="176" cy="52.5" r="3" fill="#00f0ff"/>
-                            <circle cx="176" cy="147.5" r="3" fill="#7000ff"/>
-                            <circle cx="100" cy="190" r="3" fill="#7000ff"/>
-                            <circle cx="24" cy="147.5" r="3" fill="#00f0ff"/>
-                            <circle cx="24" cy="52.5" r="3" fill="#7000ff"/>
-                        </svg>
-                        <div class="core-text">
-                            <div class="si">SI</div>
-                            <div class="label">EST. 2025</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="contact-content">
-                <div class="section-header" style="text-align: center; border-left: none; padding-left: 0;">
-                    <h2 style="border-bottom: none;">Establish Comms</h2>
-                    <p style="color: var(--text-muted);">Open a channel. All transmissions are monitored by SHRIEVE-OS.</p>
-                </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-row">
-                        <input type="text" id="contactName" placeholder="Your Name" required>
-                        <input type="email" id="contactEmail" placeholder="Your Email" required>
-                    </div>
-                    <input type="text" id="contactSubject" placeholder="Subject" required>
-                    <textarea id="contactMessage" placeholder="Message..." required></textarea>
-                    <div style="text-align: center;">
-                        <button type="submit" class="submit-btn">TRANSMIT</button>
-                    </div>
-                </form>
-                <p id="contactSuccess" style="color: var(--primary); text-align: center; margin-top: 20px; display: none;">Transmission received. SHRIEVE-OS will respond shortly.</p>
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                        <div class="label">Email</div>
-                        <div class="value">tom@shrieveindustries.com</div>
-                    </div>
-                    <div class="contact-info-item">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <div class="label">Base Ops</div>
-                        <div class="value">Lost Valley, Auburn ME</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Shrieve Industries. All systems nominal.</p>
-            <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Powered by SHRIEVE-OS v1.0</p>
-        </footer>
-    </div>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="login-card">
-            <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
-                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 5 L93.3 27.5 L93.3 72.5 L50 95 L6.7 72.5 L6.7 27.5 Z" fill="none" stroke="#00f0ff" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="25" fill="none" stroke="#00f0ff" stroke-width="2"/>
-                    <circle cx="50" cy="50" r="10" fill="#00f0ff">
-                        <animate attributeName="r" values="10;12;10" dur="2s" repeatCount="indefinite"/>
-                    </circle>
-                </svg>
-            </div>
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 30px;">SYSTEM LOCKDOWN</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label>Security Clearance Level</label>
-                    <input type="password" id="passphrase" placeholder="Enter Passphrase" required>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%;">AUTHENTICATE</button>
-            </form>
-            <p id="loginErrorMsg" style="color: var(--accent); text-align: center; margin-top: 15px; display: none;"></p>
-            <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
-                <button onclick="closeLoginModal()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-family: 'Rajdhani', sans-serif;">Cancel</button>
-            </p>
+        <div class="cube reveal" data-delay="150" aria-hidden="true">
+          <div class="band b1"><span>405 nm</span></div>
+          <div class="band b2"><span>470 nm</span></div>
+          <div class="band b3"><span>530 nm</span></div>
+          <div class="band b4"><span>590 nm</span></div>
+          <div class="band b5"><span>650 nm</span></div>
+          <div class="band b6"><span>740 nm</span></div>
+          <div class="band b7"><span>940 nm</span></div>
+          <p class="cube-caption">A spectral cube, the way Kairo sees it — one image per wavelength, 385 to 940 nm.</p>
         </div>
-    </div>
+      </div>
 
-    <!-- Admin Modal -->
-    <div class="modal" id="adminModal">
-        <div class="modal-content">
-            <h2>SHRIEVE-OS ADMIN</h2>
-            <div class="form-group">
-                <label>Project Name</label>
-                <input type="text" id="projectName" placeholder="Project: CODE_NAME">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <textarea id="projectDesc" rows="3" placeholder="Project description..."></textarea>
-            </div>
-            <div class="form-group">
-                <label>Status</label>
-                <select id="projectStatus">
-                    <option value="active">Active Development</option>
-                    <option value="completed">Mission Complete</option>
-                    <option value="future">Classified / Future</option>
-                </select>
-            </div>
-            <div class="modal-buttons">
-                <button class="btn-primary" onclick="addProject()">ADD PROJECT</button>
-                <button class="btn-secondary" onclick="closeAdminModal()">CANCEL</button>
-            </div>
+      <div class="features">
+        <article class="card reveal">
+          <span class="card-idx">01</span>
+          <h3>End-to-end capture</h3>
+          <p>One guided sequence from dark frame to finished cube. Every step — focus, per-band exposure, 16-band capture, flats, calibration — is a designed step, not a script you have to remember.</p>
+        </article>
+        <article class="card reveal" data-delay="70">
+          <span class="card-idx">02</span>
+          <h3>Everyday hardware</h3>
+          <p>Kairo probes every connected camera on launch and picks the right one: any USB camera, industrial sensors such as Pixelink or FLIR Blackfly, or converted full-spectrum DSLRs from Canon, Nikon, and Fujifilm.</p>
+        </article>
+        <article class="card reveal" data-delay="140">
+          <span class="card-idx">03</span>
+          <h3>Research-grade signal</h3>
+          <p>Frames stay linear end to end — no demosaic, no white balance, no gamma. The result is a calibrated ENVI spectral cube with the dynamic range real scholarship needs.</p>
+        </article>
+        <article class="card reveal" data-delay="60">
+          <span class="card-idx">04</span>
+          <h3>True color, with provenance</h3>
+          <p>Colorimetric rendering (D65 + CIE 1931), per-band metadata, and saved exposure profiles with every capture — so results are reproducible and defensible.</p>
+        </article>
+        <article class="card reveal" data-delay="120">
+          <span class="card-idx">05</span>
+          <h3>Fluent on every platform</h3>
+          <p>A clean, native-feeling interface on macOS, Windows, and Linux — with a hardware-free demo mode so the workflow can be learned before the rig ever arrives.</p>
+        </article>
+        <article class="card reveal" data-delay="180">
+          <span class="card-idx">06</span>
+          <h3>Open by design</h3>
+          <p>Kairo is GPL-3.0. Inspect the pipeline, extend the camera controllers, or point it at hardware we haven't imagined yet.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUDIENCE ============ -->
+  <section class="section section-alt" id="audience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Who it's for</p>
+        <h2>Built for the people who keep the record.</h2>
+      </div>
+      <div class="features">
+        <article class="card reveal">
+          <h3>Museums &amp; galleries</h3>
+          <p>Document objects before treatment, track condition over decades, and share spectral evidence with conservators.</p>
+        </article>
+        <article class="card reveal" data-delay="70">
+          <h3>Archives &amp; libraries</h3>
+          <p>Read what was thought unreadable — palimpsests, erased or corrected text, faded and water-damaged documents.</p>
+        </article>
+        <article class="card reveal" data-delay="140">
+          <h3>Universities &amp; labs</h3>
+          <p>A reproducible, standards-based capture chain for teaching multispectral methods and running spectral research.</p>
+        </article>
+        <article class="card reveal" data-delay="210">
+          <h3>Independent scholars</h3>
+          <p>A complete multispectral system that doesn't require a grant-scale hardware budget or an optics background.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ APPROACH ============ -->
+  <section class="section" id="approach">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Approach</p>
+        <h2>Low cost. Open. Research-grade.</h2>
+      </div>
+      <div class="approach">
+        <div class="approach-row reveal">
+          <div class="approach-num">I</div>
+          <div>
+            <h3>Low cost by design</h3>
+            <p>The expensive part of multispectral imaging has always been the hardware. Kairo is built around converted DSLRs and ordinary cameras — a working system for a fraction of a research-grade rig.</p>
+          </div>
         </div>
+        <div class="approach-row reveal" data-delay="80">
+          <div class="approach-num">II</div>
+          <div>
+            <h3>Rooted in research</h3>
+            <p>Kairo descends from MISHA, the multispectral imaging system developed at the Rochester Institute of Technology for historical documents with overwritten or faded content. We keep its science and rebuild everything around the person using it.</p>
+          </div>
+        </div>
+        <div class="approach-row reveal" data-delay="160">
+          <div class="approach-num">III</div>
+          <div>
+            <h3>Open source</h3>
+            <p>Released under GPL-3.0. The pipeline is readable, the controllers are extensible, and the method can be taught, checked, and improved by anyone.</p>
+          </div>
+        </div>
+        <div class="approach-row reveal" data-delay="240">
+          <div class="approach-num">IV</div>
+          <div>
+            <h3>Standards-based</h3>
+            <p>ENVI spectral cubes, linear 16-bit data, and complete per-capture metadata — formats that interoperate with the tools scholars already use.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <script src="app.js"></script>
+  <!-- ============ WHAT'S NEXT ============ -->
+  <section class="section section-alt" id="next">
+    <div class="wrap next-grid">
+      <div>
+        <p class="eyebrow reveal">What's next</p>
+        <h2 class="reveal" data-delay="80">Kairo is the first, not the last.</h2>
+      </div>
+      <div class="reveal" data-delay="160">
+        <p>Kairo is the first in a line of tools we're building for cultural heritage. It is also the
+          proof of concept for what comes next: <strong>purpose-built multispectral imaging hardware</strong> —
+          the rig, not just the software — designed from the capture chain outward.</p>
+        <p class="next-tag">Hardware in development · progress will be published here</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Talk with us.</h2>
+        <p class="section-sub">We're building partnerships with museums, archives, and labs piloting Kairo.
+          If you work with cultural heritage — or with the hardware of tomorrow — we'd like to hear from you.</p>
+      </div>
+      <div class="contact-cta reveal" data-delay="120">
+        <a class="btn btn-gold" href="mailto:tom@shrieveindustries.com">tom@shrieveindustries.com</a>
+        <a class="btn btn-ghost" href="https://github.com/bl4dereaper/KAIRO" target="_blank" rel="noopener">Kairo on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="12.5" stroke="#C9A24B" stroke-width="1.6"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#5B6FE0" stroke-width="1.8"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#C9A24B" stroke-width="1.8" transform="rotate(120 16 16)"/>
+        <path d="M16 8.5 A7.5 7.5 0 0 1 23.5 16" stroke="#C4502E" stroke-width="1.8" transform="rotate(240 16 16)"/>
+        <circle cx="16" cy="16" r="2" fill="#EFE7D8"/>
+      </svg>
+      <span>Shrieve Industries — cultural heritage imaging</span>
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/bl4dereaper/KAIRO" target="_blank" rel="noopener">Kairo</a>
+      <a href="https://github.com/bl4dereaper" target="_blank" rel="noopener">GitHub</a>
+      <a href="#top">Back to top</a>
+    </div>
+    <p class="footer-fine">© <span id="year">2026</span> Shrieve Industries. Kairo is built on MISHA, developed at the Rochester Institute of Technology.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const nav = document.getElementById('siteNav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          const d = e.target.dataset.delay;
+          if (d) e.target.style.transitionDelay = d + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
 </body>
 </html>
